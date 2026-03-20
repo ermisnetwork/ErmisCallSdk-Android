@@ -1,0 +1,8 @@
+jdk:
+  - openjdk17 # Ép JitPack dùng Java 17 ngay từ đầu
+
+before_install:
+  - chmod +x gradlew # Đảm bảo file thực thi gradle có quyền chạy
+
+install:
+  - ./gradlew :ermis-call-ui:assembleRelease publishToMavenLocal -Pgroup=com.github.ermisnetwork -Pversion=1.0.1

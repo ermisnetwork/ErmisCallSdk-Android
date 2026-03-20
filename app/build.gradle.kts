@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "network.ermis.call"
+    namespace = "network.ermis.call-app"
     compileSdk = 36
 
     defaultConfig {
