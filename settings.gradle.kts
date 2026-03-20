@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "ErmisCallSdkAndroid"
 include(":app")
- 
+include(":ermis-call-ui")

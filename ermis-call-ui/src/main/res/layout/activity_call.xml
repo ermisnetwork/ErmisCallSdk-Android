@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#90000000">
+
+    <FrameLayout
+        android:id="@+id/layoutInfoUser"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_gravity="center">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/userAvatarView"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.App.CircleImageView" />
+
+            <TextView
+                android:id="@+id/tvNameUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textAppearance="@style/TextAppearance_Ermis_Body1"
+                android:textColor="@color/white"
+                tools:text="Android Developer" />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/bgCallView"
+            android:layout_width="3000dp"
+            android:layout_height="3000dp"
+            android:alpha="0.3"
+            android:layout_gravity="center" />
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutRtcDisconnect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:elevation="2dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layoutInfoUser">
+
+        <ProgressBar
+            android:layout_width="28dp"
+            android:layout_height="28dp" />
+
+        <TextView
+            android:id="@+id/tvNetworkDis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textAppearance="@style/TextAppearance_Ermis_Call_Body2"
+            android:textColor="@android:color/white"
+            tools:text="example" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/remoteVideoRenderer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@android:color/black" />
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/callToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:elevation="0dp"
+        android:fitsSystemWindows="true"
+        android:minHeight="?attr/actionBarSize"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_call_arrow_left"
+        app:navigationIconTint="@android:color/white"
+        app:subtitleCentered="true"
+        app:subtitleTextAppearance="@style/TextAppearance_Ermis_Call_Body2"
+        app:subtitleTextColor="@android:color/white"
+        app:titleCentered="true"
+        app:titleTextAppearance="@style/TextAppearance_Ermis_Call_Subtitle1"
+        app:titleTextColor="@android:color/white"
+        tools:subtitle="@string/webrtc_peerconnection_connecting"
+        tools:title="Video call">
+
+        <ImageView
+            android:id="@+id/ivReturnChannel"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="8dp"
+            android:background="?selectableItemBackgroundBorderless"
+            android:padding="8dp"
+            android:src="@drawable/ic_call_back_to_chat" />
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <LinearLayout
+        android:id="@+id/layoutControls"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ringingControls"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:visibility="visible">
+
+            <ImageView
+                android:id="@+id/ringingControlAccept"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="@drawable/bg_call_rounded_button"
+                android:backgroundTint="@color/color_green"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="16dp"
+                android:src="@drawable/ic_call_accept"
+                app:tint="?colorOnPrimary"
+                tools:ignore="MissingConstraints,MissingPrefix" />
+
+            <ImageView
+                android:id="@+id/ringingControlDecline"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="@drawable/bg_call_rounded_button"
+                android:backgroundTint="@color/color_red"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="16dp"
+                android:src="@drawable/ic_call_hangup"
+                app:tint="?colorOnError"
+                tools:ignore="MissingConstraints,MissingPrefix" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="ringingControlDecline, ringingControlAccept"
+                app:flow_horizontalGap="100dp"
+                app:flow_horizontalStyle="packed"
+                tools:ignore="MissingConstraints" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/connectedControls"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="0dp"
+            android:paddingEnd="0dp"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <ImageView
+                android:id="@+id/audioSettingsIcon"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="@drawable/bg_call_rounded_button"
+                android:backgroundTint="#70000000"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="16dp"
+                android:scaleType="center"
+                android:src="@drawable/ic_call_audio_settings"
+                app:tint="@android:color/white"
+                tools:ignore="MissingConstraints,MissingPrefix" />
+
+            <ImageView
+                android:id="@+id/muteIcon"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="@drawable/bg_call_rounded_button"
+                android:backgroundTint="#70000000"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="16dp"
+                android:src="@drawable/ic_call_mic_on"
+                app:tint="@android:color/white"
+                tools:ignore="MissingConstraints,MissingPrefix" />
+
+            <ImageView
+                android:id="@+id/videoToggleIcon"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="@drawable/bg_call_rounded_button"
+                android:backgroundTint="#70000000"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="16dp"
+                android:src="@drawable/ic_call_video"
+                app:tint="@android:color/white"
+                tools:ignore="MissingConstraints,MissingPrefix" />
+
+            <ImageView
+                android:id="@+id/endCallIcon"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="@drawable/bg_call_rounded_button"
+                android:backgroundTint="@color/color_red"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="16dp"
+                android:src="@drawable/ic_call_hangup"
+                app:tint="?colorOnError"
+                tools:ignore="MissingConstraints,MissingPrefix" />
+
+            <ImageView
+                android:id="@+id/btnSwitchCamera"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="@drawable/bg_call_rounded_button"
+                android:backgroundTint="#70000000"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="16dp"
+                android:scaleType="center"
+                android:src="@drawable/ic_call_camera_flip"
+                app:tint="@android:color/white"
+                tools:ignore="MissingConstraints,MissingPrefix" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="audioSettingsIcon, muteIcon, videoToggleIcon, btnSwitchCamera, endCallIcon"
+                app:flow_horizontalGap="16dp"
+                app:flow_horizontalStyle="packed"
+                app:flow_wrapMode="chain"
+                tools:ignore="MissingConstraints" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/requestVideoCall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="64dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:visibility="visible">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="120dp"
+            android:gravity="center"
+            android:text="@string/request_video_call"
+            android:textAppearance="@style/TextAppearance_Ermis_Call_Subtitle1"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toTopOf="@id/ivAcceptVideo" />
+
+        <ImageView
+            android:id="@+id/ivAcceptVideo"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@drawable/bg_call_rounded_button"
+            android:backgroundTint="@color/color_green"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="16dp"
+            android:src="@drawable/ic_call_video_upgrade"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivRejectVideo"
+            app:tint="?colorOnPrimary" />
+
+        <ImageView
+            android:id="@+id/ivRejectVideo"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@drawable/bg_call_rounded_button"
+            android:backgroundTint="#70000000"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="16dp"
+            android:src="@drawable/ic_call_close_white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/ivAcceptVideo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:tint="?colorOnError" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/ivRemoteMicOff"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="24dp"
+        android:src="@drawable/ic_call_mic_off"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:tint="@android:color/white"
+        tools:visibility="visible" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/pipContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/callToolbar">
+
+        <LinearLayout
+            android:id="@+id/localVideoRenderer"
+            android:layout_width="126dp"
+            android:layout_height="160dp"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginVertical="0dp"
+            android:foregroundGravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@android:color/white"
+            android:padding="1dp"
+            android:gravity="center"
+            android:orientation="vertical" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/tvEndpointInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/callToolbar"
+        android:layout_marginTop="200dp"
+        android:padding="16dp"
+        android:background="#70000000"
+        android:textSize="16sp"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
