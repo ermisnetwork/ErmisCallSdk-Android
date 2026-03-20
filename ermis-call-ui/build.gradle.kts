@@ -73,7 +73,7 @@ afterEvaluate {
                 }
                 groupId = "com.github.ermisnetwork"
                 artifactId = "ermis-call-ui"
-                version = "1.0.4"
+                version = "1.0.5"
             }
         }
     }
