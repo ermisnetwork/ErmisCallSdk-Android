@@ -57,11 +57,7 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.lifecycle.livedata.ktx)
 
-    implementation("net.java.dev.jna:jna:5.18.1@aar") {
-        artifact {
-            type = "aar"
-        }
-    }
+    api("net.java.dev.jna:jna:5.18.1@aar")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
