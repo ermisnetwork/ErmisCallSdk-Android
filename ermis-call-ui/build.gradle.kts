@@ -58,10 +58,6 @@ dependencies {
     implementation(libs.androidx.lifecycle.livedata.ktx)
 
     api("net.java.dev.jna:jna:5.18.1@aar")
-
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
 }
 
 afterEvaluate {
@@ -74,6 +70,17 @@ afterEvaluate {
                 groupId = "com.github.ermisnetwork"
                 artifactId = "ermis-call-ui"
                 version = "1.0.5"
+
+                pom.withXml {
+                    val dependenciesNode = asNode().appendNode("dependencies")
+                    // Thêm thủ công JNA vào file POM
+                    val depNode = dependenciesNode.appendNode("dependency")
+                    depNode.appendNode("groupId", "net.java.dev.jna")
+                    depNode.appendNode("artifactId", "jna")
+                    depNode.appendNode("version", "5.18.1")
+                    depNode.appendNode("type", "aar")
+                    depNode.appendNode("scope", "compile")
+                }
             }
         }
     }
