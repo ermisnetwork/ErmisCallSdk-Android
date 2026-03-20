@@ -68,10 +68,12 @@ afterEvaluate {
     publishing {
         publications {
             create<MavenPublication>("release") {
-                from(components["release"])
+                afterEvaluate {
+                    from(components["release"])
+                }
                 groupId = "com.github.ermisnetwork"
                 artifactId = "ermis-call-ui"
-                version = "1.0.0"
+                version = "1.0.4"
             }
         }
     }
