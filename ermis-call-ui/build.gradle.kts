@@ -60,27 +60,27 @@ dependencies {
     api("net.java.dev.jna:jna:5.18.1@aar")
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            create<MavenPublication>("release") {
-                afterEvaluate {
-                    from(components["release"])
-                }
-                groupId = "com.github.ermisnetwork"
-                artifactId = "ermis-call-ui"
-                version = "1.0.5"
+publishing {
+    publications {
+        create<MavenPublication>("release") {
+            afterEvaluate {
+                from(components["release"])
+            }
+            groupId = "com.github.ermisnetwork"
+            artifactId = "ermis-call-ui"
+            version = "1.0.7"
 
-                pom.withXml {
-                    val dependenciesNode = asNode().appendNode("dependencies")
-                    // Thêm thủ công JNA vào file POM
-                    val depNode = dependenciesNode.appendNode("dependency")
-                    depNode.appendNode("groupId", "net.java.dev.jna")
-                    depNode.appendNode("artifactId", "jna")
-                    depNode.appendNode("version", "5.18.1")
-                    depNode.appendNode("type", "aar")
-                    depNode.appendNode("scope", "compile")
-                }
+            pom.withXml {
+                val dependenciesNode = asNode().get("dependencies") as? groovy.util.Node
+                    ?: asNode().appendNode("dependencies")
+
+                // Thêm JNA vào POM một cách an toàn
+                val dependency = dependenciesNode.appendNode("dependency")
+                dependency.appendNode("groupId", "net.java.dev.jna")
+                dependency.appendNode("artifactId", "jna")
+                dependency.appendNode("version", "5.16.0")
+                dependency.appendNode("scope", "compile")
+                dependency.appendNode("type", "aar")
             }
         }
     }
