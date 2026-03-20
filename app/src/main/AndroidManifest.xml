@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ErmisCallSdkAndroid">
         <activity
-            android:name=".MainActivity"
+            android:name="network.ermis.call.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
