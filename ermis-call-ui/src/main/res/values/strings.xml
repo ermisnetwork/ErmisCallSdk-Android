@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="backend_error_call">Ups, something went wrong</string>
+
+    // audio device
+    <string name="sound_device_phone">Phone</string>
+    <string name="sound_device_speaker">Speaker</string>
+    <string name="sound_device_headset">Headset</string>
+    <string name="sound_device_wireless_headset">Wireless Headset</string>
+
+    <string name="title_audio_call">Audio Call</string>
+    <string name="title_video_call">Video Call</string>
+    <string name="call_ringing">Ringing…</string>
+    <string name="webrtc_peerconnection_connecting">Connecting…</string>
+    <string name="webrtc_peerconnection_connected">Connected</string>
+    <string name="call_incoming_notification_description">Incoming call</string>
+    <string name="call_outgoing_notification_description">Calling…</string>
+    <string name="call_in_progress_notification_description">Call in progress, tap to go back to the call</string>
+    <string name="missed_video_call">Missed video call</string>
+    <string name="missed_audio_call">Missed audio call</string>
+    <string name="call_action_accept">Accept</string>
+    <string name="call_action_hangup">Decline</string>
+    <string name="tap_to_return_call">Tap to return call</string>
+    <string name="call_error_not_connect_network">Unable to make the call. Please check your network connection</string>
+    <string name="you_are_on_another_call">You are on another call</string>
+    <string name="your_network_connection_is_unstable">Your network connection is unstable</string>
+    <string name="user_network_connection_is_unstable"> \'s network connection is unstable</string>
+    <string name="request_video_call">Video call request</string>
+
+    <!-- Permissions -->
+    <string name="permission_camera_title">Camera and Storage Access Permission</string>
+    <string name="permission_camera_message">Camera and storage access permissions are needed in order to be able to take photos and videos</string>
+    <string name="permission_audio_record_title">Record Audio Permissions</string>
+    <string name="permission_audio_record_message">Record Audio permission is needed in order to be able to record and send audio files</string>
+    <string name="permission_setting_message">Enable permissions on App Settings</string>
+    <string name="permissions_setting_button">Settings</string>
+    <string name="permission_video_call_title">Record Audio and Camera Permissions</string>
+    <string name="permissions_rationale_msg_camera_and_audio">App needs permission to access your camera and your microphone to perform video calls.\n\nPlease allow access on the next pop-ups to be able to make the call.</string>
+
+</resources>
