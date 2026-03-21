@@ -58,7 +58,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.livedata.ktx)
 
     // Dùng compileOnly để lấy code Java, file native đã nằm trong jniLibs
-    compileOnly("net.java.dev.jna:jna:5.18.1")
+    api("net.java.dev.jna:jna:5.18.1")
 }
 
 afterEvaluate {

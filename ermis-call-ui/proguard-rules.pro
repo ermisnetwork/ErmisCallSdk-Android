@@ -19,3 +19,13 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+# Keep all classes in the JNA package
+-keep class com.sun.jna.** { *; }
+
+# Keep all public interfaces in the JNA package and their members
+-keep public interface com.sun.jna.** { *; }
+
+# Keep native methods and the classes that contain them
+-keepclasseswithmembernames,includedescriptorclasses class * {
+    native <methods>;
+}
