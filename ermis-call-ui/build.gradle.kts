@@ -57,30 +57,20 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.lifecycle.livedata.ktx)
 
-    api("net.java.dev.jna:jna:5.18.1@aar")
+    // Dùng compileOnly để lấy code Java, file native đã nằm trong jniLibs
+    compileOnly("net.java.dev.jna:jna:5.18.1")
 }
 
-publishing {
-    publications {
-        create<MavenPublication>("release") {
-            afterEvaluate {
-                from(components["release"])
-            }
-            groupId = "com.github.ermisnetwork"
-            artifactId = "ermis-call-ui"
-            version = "1.0.7"
-
-            pom.withXml {
-                val dependenciesNode = asNode().get("dependencies") as? groovy.util.Node
-                    ?: asNode().appendNode("dependencies")
-
-                // Thêm JNA vào POM một cách an toàn
-                val dependency = dependenciesNode.appendNode("dependency")
-                dependency.appendNode("groupId", "net.java.dev.jna")
-                dependency.appendNode("artifactId", "jna")
-                dependency.appendNode("version", "5.16.0")
-                dependency.appendNode("scope", "compile")
-                dependency.appendNode("type", "aar")
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                afterEvaluate {
+                    from(components["release"])
+                }
+                groupId = "com.github.ermisnetwork"
+                artifactId = "ermis-call-ui"
+                version = "1.0.8"
             }
         }
     }
